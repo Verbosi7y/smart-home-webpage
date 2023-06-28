@@ -1,0 +1,75 @@
+<!--
+    Title: Smart Home Hub
+    Authors: Darwin Xue, Clayton Ross, Rodrigo Pardo
+    Class: CMSC437 - Graphical User Interface Programming
+    Professor: Kash Donyaee
+    Date: 6/21/23 SUMMER23
+
+    Project 1 - Long Term Project
+    Description:
+        A webpage designed for ease of use and user-focused
+        UI/UX for a Smart Home Hub webpage.
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Smart Home Hub</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <!--Weather Widget-->
+        <span class="widget" id="weather">
+            <canvas class="module"> </canvas>
+            <canvas class="no-options"> </canvas>
+        </span>
+
+        <!--Refrigerator Widget-->
+        <span class="widget" id="fridge">
+            <canvas class="module"> </canvas>
+            <canvas class="options"> </canvas>
+        </span>
+
+        <!--Thermostat Widget-->
+        <span class="widget" id="thermostat"> 
+            <canvas class="module"> </canvas>
+            <canvas class="options"> </canvas>
+        </span>
+
+        <!--Coffee Machine Widget-->
+        <span class="widget" id="coffee"> 
+            <canvas class="module"> </canvas>
+            <canvas class="options"> </canvas>
+        </span>
+
+        <!--Vacuum Machine Widget-->
+        <span class="widget" id="vacuum"> 
+            <canvas class="module"> </canvas>
+            <canvas class="options"> </canvas>
+        </span>
+
+        <!--Garden Lights Widget-->
+        <span class="widget" id="garden-light"> 
+            <canvas class="module"> </canvas>
+            <canvas class="options"> </canvas>
+        </span>
+
+        <!--Garden Irrigation Widget-->
+        <span class="widget" id="garden-irrigation"> 
+            <canvas class="module"> </canvas>
+            <canvas class="options"> </canvas>
+        </span>
+
+        <!--Add New Device Widget-->
+        <span class="widget" id="add-device"> 
+            <canvas class="module"> </canvas>
+            <canvas class="no-options"> </canvas>
+        </span>
+
+        <footer>John Doe's Smart Home Hub</footer>
+
+        <script src="render.js"></script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+canvas.module {
+    border: 5px solid black;
+    border-radius: 5px;
+    width: 250px;
+    height: 150px;
+}
+
+canvas.options {
+    position: relative;
+    bottom: 105px;
+    white-space: nowrap;
+    width: 20px;
+    height: 50px;
+    background-color: aqua;
+}
+
+canvas.no-options {
+    position: relative;
+    bottom: 55px;
+    white-space: nowrap;
+    width: 20px;
+    height: 50px;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 5em;
+    text-align: center;
+}
