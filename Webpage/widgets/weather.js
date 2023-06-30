@@ -1,10 +1,12 @@
-var temp = 72; // default temperature
+let temp = 72; // default temperature
 document.getElementById("temperature-num").innerHTML = temp.toString();
 
 function increaseTemp(){ 
-    document.getElementById("temperature-num").innerHTML = (++temp).toString();
+    temp += 1;
+    document.getElementById("temperature-num").innerHTML = temp;
 }
 
 function decreaseTemp(){
-    document.getElementById("temperature-num").innerHTML = (--temp).toString();
+    temp -= 1;
+    document.getElementById("temperature-num").innerHTML = temp;
 }

@@ -50,3 +50,77 @@ footer {
 #weather > .module {
     text-align: center;
 }
+
+.module {
+    font-size: 20px;
+    padding-bottom: 40px;
+}
+
+#weather button {
+    display: inline-block;
+    padding: 8px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+}
+#hot {
+    background-color: red;
+}
+#cold {
+    background-color: blue;
+}
+
+#weather button:hover {
+    background-color: black;
+}
+#weather button:active {
+    background-color: black;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#fridge .module{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding-left: 40px;
+}
+.fridge{
+    width: 50%;
+}
+.freezer {
+    width: 50%;
+}
+
+#fridge button {
+    display: inline-block;
+    padding: 8px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+}
+#hot {
+    background-color: red;
+}
+#cold {
+    background-color: blue;
+}
+
+#fridge button:hover {
+    background-color: black;
+}
+#fridge button:active {
+    background-color: black;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
