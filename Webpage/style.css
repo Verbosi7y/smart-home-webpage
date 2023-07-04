@@ -9,15 +9,40 @@ article.module {
     border: 5px solid black;
     border-radius: 5px;
     width: 250px;
-    height: 150px;
+    height: 180px;
     flex: 300px;/* the absolute size works better*/
+}
+
+#hub-title {
+    position: relative;
+    width: 100%;
+    font-size: 5em;
+    text-align: center;
+}
+
+/* Thermostat */
+#thermostat > .module {
+    text-align: center;
+}
+
+#thermostat button {
+    display: inline-block;
+    padding: 8px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
 }
 
 canvas.module {
     border: 5px solid black;
     border-radius: 5px;
     width: 250px;
-    height: 150px;
+    height: 180px;
 }
 
 canvas.options {
@@ -123,4 +148,28 @@ footer {
     background-color: black;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+}
+
+#coffee > .module {
+    text-align: center;
+}
+
+#vacuum > .module {
+    text-align: center;
+}
+
+#garden-light > .module {
+    text-align: center;
+}
+
+#garden-irrigation > .module {
+    text-align: center;
+}
+
+.toggleButton {
+    background-color: green;
+    font-size: 48px;
+    margin: 10px;
+    width: 200px;
+    height: 100px;
 }

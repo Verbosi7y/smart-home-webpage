@@ -25,13 +25,18 @@
             <span class="widget" id="weather">
                 <article class="module">
                     <div>
-                        <h1>MY ROOM</h1>
+                        <h1>Weather</h1>
                     </div>
-                    <button id="hot" onclick="increaseTemp()">Hot</button>
-                    <div id="temperature-num"></div>
-                    <button id="cold" onclick="decreaseTemp()">Cold</button>
+                    <label for="cities">City:</label>
+                    <select name="cities" id="cities" onchange="load()">
+                        <option value="catonsville">Catonsville</option>
+                        <option value="baltimore">Baltimore</option>
+                        <option value="new_york">New York</option>
+                        <option value="los_angeles">Los Angeles</option>
+                      </select>
+                    <div id="weather-num"></div>
+                    <button id="refresh" onclick="load()">refresh</button>
                 </article>
-                <!-- <canvas class="no-options"> </canvas> -->
             </span>
 
             <!--Refrigerator Widget-->
@@ -53,6 +58,7 @@
                         <div id="freezer-num"></div>
                         <button id="cold" onclick="decreaseFreezer()">Cold</button>
                     </div>
+                    <input type="datetime-local" id="schedule"></input>
                 </article>
                 <canvas class="options"> </canvas>
             </span>
@@ -61,42 +67,66 @@
             <span class="widget" id="thermostat"> 
                 <article class="module">
                     <div>
-                        <h1>Weather</h1>
+                        <h1>MY ROOM</h1>
                     </div>
-                    <div id="weather-num"></div>
-                    <button id="refresh" onclick="load()">refresh</button>
+                    <button id="hot" onclick="increaseTemp()">Hot</button>
+                    <div id="temperature-num"></div>
+                    <button id="cold" onclick="decreaseTemp()">Cold</button>
+                    <input type="datetime-local" id="schedule"></input>
                 </article>
-                <canvas class="options"> </canvas>
             </span>
 
             <!--Coffee Machine Widget-->
             <span class="widget" id="coffee"> 
-                <canvas class="module"> </canvas>
-                <canvas class="options"> </canvas>
+                <article class="module">
+                    <button id="coffeeButton" class="toggleButton" 
+                            onclick="toggleButton('coffeeButton')">ON</button>
+                    <div>
+                        <h1>Coffee</h1>
+                    </div>
+                    <input type="datetime-local" id="schedule"></input>
+                </article>
             </span>
 
             <!--Vacuum Machine Widget-->
             <span class="widget" id="vacuum"> 
-                <canvas class="module"> </canvas>
-                <canvas class="options"> </canvas>
+                <article class="module">
+                    <button id="vacuumButton" class="toggleButton" 
+                            onclick="toggleButton('vacuumButton')">ON</button>
+                    <div>
+                        <h1>Vacuum</h1>
+                    </div>
+                    <input type="datetime-local" id="schedule"></input>
+                </article>
             </span>
 
             <!--Garden Lights Widget-->
             <span class="widget" id="garden-light"> 
-                <canvas class="module"> </canvas>
-                <canvas class="options"> </canvas>
+                <article class="module">
+                    <button id="garden-lightButton" class="toggleButton" 
+                            onclick="toggleButton('garden-lightButton')">ON</button>
+                    <div>
+                        <h1>Garden Lighting</h1>
+                    </div>
+                    <input type="datetime-local" id="schedule"></input>
+                </article>
             </span>
 
             <!--Garden Irrigation Widget-->
             <span class="widget" id="garden-irrigation"> 
-                <canvas class="module"> </canvas>
-                <canvas class="options"> </canvas>
+                <article class="module">
+                    <button id="garden-irrigationButton" class="toggleButton" 
+                            onclick="toggleButton('garden-irrigationButton')">ON</button>
+                    <div>
+                        <h1>Garden Irrigation</h1>
+                    </div>
+                    <input type="datetime-local" id="schedule"></input>
+                </article>
             </span>
         
             <!--Add New Device Widget-->
             <span class="widget" id="add-device"> 
                 <canvas class="module"> </canvas>
-                <canvas class="no-options"> </canvas>
             </span>
         </section>
 
@@ -106,5 +136,6 @@
         <script src="widgets/weather.js"></script>
         <script src="widgets/fridge.js"></script>
         <script src="widgets/openMeteoWeather.js"></script>
+        <script src="widgets/toggleButton.js"></script>
     </body>
 </html>
