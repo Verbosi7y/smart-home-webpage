@@ -59,7 +59,13 @@
 
             <!--Thermostat Widget-->
             <span class="widget" id="thermostat"> 
-                <canvas class="module"> </canvas>
+                <article class="module">
+                    <div>
+                        <h1>Weather</h1>
+                    </div>
+                    <div id="weather-num"></div>
+                    <button id="refresh" onclick="load()">refresh</button>
+                </article>
                 <canvas class="options"> </canvas>
             </span>
 
@@ -99,5 +105,6 @@
         <script src="render.js"></script>
         <script src="widgets/weather.js"></script>
         <script src="widgets/fridge.js"></script>
+        <script src="widgets/openMeteoWeather.js"></script>
     </body>
 </html>
