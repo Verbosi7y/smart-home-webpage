@@ -9,8 +9,8 @@ article.module {
     position: relative;
     border: 5px solid black;
     border-radius: 5px;
-    width: 250px;
-    height: 150px;
+    width: 350px;
+    height: 200px;
     font-size: 20px;
     padding-bottom: 40px;
     flex: 300px;/* the absolute size works better*/
