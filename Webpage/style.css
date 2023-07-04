@@ -1,3 +1,4 @@
+/* General CSS */
 section {
     display: flex;
     flex-direction: row;
@@ -10,43 +11,83 @@ article.module {
     border-radius: 5px;
     width: 250px;
     height: 150px;
+    font-size: 20px;
+    padding-bottom: 40px;
     flex: 300px;/* the absolute size works better*/
 }
 
-canvas.module {
-    border: 5px solid black;
-    border-radius: 5px;
-    width: 250px;
-    height: 150px;
-}
-
-canvas.options {
+#hub-title {
     position: relative;
-    bottom: 105px;
-    white-space: nowrap;
-    width: 20px;
-    height: 50px;
-    background-color: aqua;
-}
-
-canvas.no-options {
-    position: relative;
-    bottom: 55px;
-    white-space: nowrap;
-    width: 20px;
-    height: 50px;
-    background-color: aqua;
-}
-
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
     width: 100%;
     font-size: 5em;
     text-align: center;
 }
 
-#weather > .module {
+/* Thermostat */
+#thermostat > .module {
     text-align: center;
+}
+
+#thermostat button {
+    display: inline-block;
+    padding: 8px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+}
+#hot {
+    background-color: red;
+}
+#cold {
+    background-color: blue;
+}
+
+#thermostat button:hover {
+    background-color: black;
+}
+#thermostat button:active {
+    background-color: black;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+/* Fridge */
+#fridge .module{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding-left: 40px;
+}
+.fridge{
+    width: 50%;
+}
+.freezer {
+    width: 50%;
+}
+
+#fridge button {
+    display: inline-block;
+    padding: 8px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+}
+
+#fridge button:hover {
+    background-color: black;
+}
+#fridge button:active {
+    background-color: black;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
