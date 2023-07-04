@@ -124,3 +124,27 @@ footer {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
 }
+
+#coffee > .module {
+    text-align: center;
+}
+
+#vacuum > .module {
+    text-align: center;
+}
+
+#garden-light > .module {
+    text-align: center;
+}
+
+#garden-irrigation > .module {
+    text-align: center;
+}
+
+.toggleButton {
+    background-color: green;
+    font-size: 48px;
+    margin: 10px;
+    width: 200px;
+    height: 100px;
+}

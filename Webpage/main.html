@@ -71,24 +71,52 @@
 
             <!--Coffee Machine Widget-->
             <span class="widget" id="coffee"> 
+                <article class="module">
+                    <button id="coffeeButton" class="toggleButton" 
+                            onclick="toggleButton('coffeeButton')">ON</button>
+                    <div>
+                        <h1>Coffee</h1>
+                    </div>
+                </article>
                 <canvas class="module"> </canvas>
                 <canvas class="options"> </canvas>
             </span>
 
             <!--Vacuum Machine Widget-->
             <span class="widget" id="vacuum"> 
+                <article class="module">
+                    <button id="vacuumButton" class="toggleButton" 
+                            onclick="toggleButton('vacuumButton')">ON</button>
+                    <div>
+                        <h1>Vacuum</h1>
+                    </div>
+                </article>
                 <canvas class="module"> </canvas>
                 <canvas class="options"> </canvas>
             </span>
 
             <!--Garden Lights Widget-->
             <span class="widget" id="garden-light"> 
+                <article class="module">
+                    <button id="garden-lightButton" class="toggleButton" 
+                            onclick="toggleButton('garden-lightButton')">ON</button>
+                    <div>
+                        <h1>Garden Lighting</h1>
+                    </div>
+                </article>
                 <canvas class="module"> </canvas>
                 <canvas class="options"> </canvas>
             </span>
 
             <!--Garden Irrigation Widget-->
             <span class="widget" id="garden-irrigation"> 
+                <article class="module">
+                    <button id="garden-irrigationButton" class="toggleButton" 
+                            onclick="toggleButton('garden-irrigationButton')">ON</button>
+                    <div>
+                        <h1>Garden Irrigation</h1>
+                    </div>
+                </article>
                 <canvas class="module"> </canvas>
                 <canvas class="options"> </canvas>
             </span>
@@ -106,5 +134,6 @@
         <script src="widgets/weather.js"></script>
         <script src="widgets/fridge.js"></script>
         <script src="widgets/openMeteoWeather.js"></script>
+        <script src="widgets/toggleButton.js"></script>
     </body>
 </html>
