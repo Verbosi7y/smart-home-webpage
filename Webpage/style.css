@@ -41,6 +41,11 @@ section {
     background-color: blue;
 }
 
+/* Schedule (Date and Time) */
+.schedule-wrap {
+    padding-top: 20px;
+}
+
 /* Weather */
 #weather > .module {
     text-align: center;
@@ -68,6 +73,10 @@ section {
     text-align: center;
 }
 
+#fridge-num, #freezer-num{
+    padding-left: 20px;
+}
+
 #thermostat button {
     display: inline-block;
     padding: 8px 15px;
@@ -80,6 +89,7 @@ section {
     border: none;
     border-radius: 15px;
 }
+
 #hot {
     background-color: red;
 }
@@ -103,11 +113,17 @@ section {
     flex-direction: row;
     padding-left: 40px;
 }
+
 .fridge{
     width: 50%;
 }
+
 .freezer {
     width: 50%;
+}
+
+#fridge-interactable, #freezer-interactable {
+    padding-left: 20px;
 }
 
 #fridge button {
@@ -152,6 +168,7 @@ section {
     text-align: center;
 }
 
+/* Add Device */
 #add-device > .module {
     text-align: center;
 }
