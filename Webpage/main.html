@@ -15,14 +15,17 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Smart Home Hub</title>
         <link rel="stylesheet" href="style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </head>
 
-    <body>
-        <section>
+    <body style="background-color: #424242;">
+        <div id="home-title">Farmer's Smart Home Hub</div>
+
+        <div class="d-flex justify-content-center flex-wrap">
             <!--Weather Widget-->
             <span class="widget" id="weather">
                 <article class="module">
@@ -129,9 +132,7 @@
             <span class="widget" id="add-device"> 
                 <article class="module"> </article>
             </span>
-        </section>
-
-        <footer>John Doe's Smart Home Hub</footer>
+        </div>
 
         <script src="render.js"></script>
         <script src="widgets/weather.js"></script>
