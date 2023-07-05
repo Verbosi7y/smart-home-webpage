@@ -142,6 +142,10 @@ footer {
     text-align: center;
 }
 
+#add-device > .module {
+    text-align: center;
+}
+
 .toggleButton {
     background-color: green;
     font-size: 48px;
