@@ -80,6 +80,12 @@ section {
     border: none;
     border-radius: 15px;
 }
+#hot {
+    background-color: red;
+}
+#cold {
+    background-color: blue;
+}
 
 #thermostat button:hover {
     background-color: black;
@@ -143,5 +149,9 @@ section {
 
 /* Garden Irrigation */
 #garden-irrigation > .module {
+    text-align: center;
+}
+
+#add-device > .module {
     text-align: center;
 }
