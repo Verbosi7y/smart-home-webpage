@@ -8,6 +8,7 @@ article.module {
     position: relative;
     border: 5px solid black;
     border-radius: 5px;
+    margin: 10px; /*adding distance from eachother could affect settings bar*/
     width: 250px;
     height: 180px;
     flex: 300px;/* the absolute size works better*/
