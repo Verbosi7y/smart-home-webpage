@@ -1,12 +1,20 @@
-let temp = 72; // default temperature
-document.getElementById("temperature-num").innerHTML = temp.toString() + " F°";
+let thermostat_temp = 72; // default temperature
+retrieve();
+
+function setThermostat(temp){
+    thermostat_temp = temp;
+    document.getElementById("temperature-num").innerHTML = thermostat_temp + " F°";
+    save();
+}
 
 function increaseTemp(){ 
-    temp += 1;
-    document.getElementById("temperature-num").innerHTML = temp + " F°";
+    thermostat_temp += 1;
+    document.getElementById("temperature-num").innerHTML = thermostat_temp + " F°";
+    save();
 }
 
 function decreaseTemp(){
-    temp -= 1;
-    document.getElementById("temperature-num").innerHTML = temp + " F°";
+    thermostat_temp -= 1;
+    document.getElementById("temperature-num").innerHTML = thermostat_temp + " F°";
+    save();
 }
