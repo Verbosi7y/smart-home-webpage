@@ -8,9 +8,9 @@ article.module {
     position: relative;
     border: 5px solid black;
     border-radius: 5px;
-    width: 250px;
-    height: 180px;
-    flex: 300px;/* the absolute size works better*/
+    width: 350px;
+    height: 250px;
+    flex: 300px;
 }
 
 #hub-title {
@@ -36,31 +36,6 @@ article.module {
     color: #fff;
     border: none;
     border-radius: 15px;
-}
-
-canvas.module {
-    border: 5px solid black;
-    border-radius: 5px;
-    width: 250px;
-    height: 180px;
-}
-
-canvas.options {
-    position: relative;
-    bottom: 105px;
-    white-space: nowrap;
-    width: 20px;
-    height: 50px;
-    background-color: aqua;
-}
-
-canvas.no-options {
-    position: relative;
-    bottom: 55px;
-    white-space: nowrap;
-    width: 20px;
-    height: 50px;
-    background-color: aqua;
 }
 
 footer {
