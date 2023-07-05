@@ -74,7 +74,7 @@ section {
 }
 
 #fridge-num, #freezer-num{
-    padding-left: 20px;
+    padding-left: 12px;
 }
 
 #thermostat button {
@@ -122,8 +122,12 @@ section {
     width: 50%;
 }
 
-#fridge-interactable, #freezer-interactable {
+#fridge-interactable {
     padding-left: 20px;
+}
+
+#freezer-interactable {
+    padding-left: 35px;
 }
 
 #fridge button {
