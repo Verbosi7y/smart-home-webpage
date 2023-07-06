@@ -1,8 +1,18 @@
+let coffeeBool = 1;
+let vacuumBool = 1;
+let lightingBool = 1;
+let irrigationBool = 1;
+let fridge = 40; // default temperature
+let freezer = 20;
+let thermostat_temp = 72; // default temperature
+
 var db = {};
 retrieve();
 
 function save(){
-    db = {FRIDGE:fridge, FREEZER:freezer, THERMOSTAT:thermostat_temp}; 
+    db = {FRIDGE:fridge, FREEZER:freezer, THERMOSTAT:thermostat_temp, 
+        COFFEE:coffeeBool, VACUUM:vacuumBool, LIGHTING:lightingBool, IRRIGATION:irrigationBool};
+
     var JSONObject = JSON.stringify(db);
     //JSON stands for JavaScript Object Notation
     /* The following is an example of JSON database
@@ -23,6 +33,8 @@ function retrieve(){
         setFridge(JSObject["FRIDGE"]);
         setFreezer(JSObject["FREEZER"]);
         setThermostat(JSObject["THERMOSTAT"]);
+        setToggle(JSObject);
+
     } catch {
         save();
         retrieve();
