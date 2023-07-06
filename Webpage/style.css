@@ -10,7 +10,7 @@ section {
     flex-wrap: wrap;
 }
 
-.module {
+.widget {
     background-color: #E5DADA;
     position: relative;
     border: 5px solid #E5DADA;
