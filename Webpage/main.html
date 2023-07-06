@@ -35,6 +35,7 @@
                         <h1>Weather</h1>
                     </div>
                     <label for="cities">City:</label>
+                    <!--
                     <select name="cities" id="cities" onchange="load()">
                         <option value="austin">Austin</option>
                         <option value="baltimore">Baltimore</option>
@@ -64,6 +65,8 @@
                         <option value="seattle">Seattle</option>
                         <option value="washington_dc"> Washington DC</option>
                       </select>
+                    -->
+                    <input type="text" id="cityInput" oninput="loadCityTemp()">
                     <div id="weather-num"></div>
                     <!-- <button id="refresh" onclick="load()">refresh</button> // TESTING -->
                 </article>

@@ -1,4 +1,4 @@
-const locations = {
+/*const locations = {
     catonsville: ["39.2721", "-76.7319"], // Default
     new_york: ["40.7143", "-74.006"],
     los_angeles: ["34.0522", "-118.2437"],
@@ -26,24 +26,39 @@ const locations = {
     washington_dc: ["38.8951", "-77.0364"],
     boston: ["42.361145", "-71.057083"],
     las_vegas: ["36.188110", "-115.176468"]
-    };
+    };*/
 
 let weather = 404; // default value if error
 
-load();
+loadCityTemp();
 
-async function load() {
+async function loadCityTemp() {
     const date = new Date();
     var selectElem = document.getElementById("cities");
-    var city = selectElem.options[selectElem.selectedIndex].value;
 
-    let url = 'https://api.open-meteo.com/v1/forecast?latitude=' + locations[city][0] + '&longitude=' + locations[city][1] + '&hourly=temperature_2m&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FNew_York&forecast_days=1';
     
-    try {
-        weather = await (await fetch(url)).json();
-        document.getElementById("weather-num").innerHTML = weather.hourly.temperature_2m[date.getHours()] + " F°";
+    var OWM_API_Key = 'e9218fd9904305f49ee367bbf59e44a5';
+    var cityName = document.getElementById("cityInput").value;
+    var locationURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + OWM_API_Key;
+
+    try{
+        let cityInfo = await (await fetch(locationURL)).json();
+        //console.log(cityInfo.coord.lat.toString() + '_' + cityInfo.coord.lon.toString());
+
+        let weatherUrl = 'https://api.open-meteo.com/v1/forecast?latitude=' + cityInfo.coord.lat + '&longitude=' + cityInfo.coord.lon + '&hourly=temperature_2m&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FNew_York&forecast_days=1';
+    
+        try {
+            weather = await (await fetch(weatherUrl)).json();
+            document.getElementById("weather-num").innerHTML = weather.hourly.temperature_2m[date.getHours()] + " F°";
+        } catch(e) {
+            document.getElementById("weather-num").innerHTML = "invalid city";
+            //console.log(weather);
+        }
     } catch(e) {
-        document.getElementById("weather-num").innerHTML = "404";
-        console.log(weather);
+        document.getElementById("weather-num").innerHTML = "invalid city";
+        return;
     }
+    
+
+    
 }
