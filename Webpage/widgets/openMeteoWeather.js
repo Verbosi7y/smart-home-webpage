@@ -50,6 +50,7 @@ async function loadCityTemp() {
         try {
             weather = await (await fetch(weatherUrl)).json();
             document.getElementById("weather-num").innerHTML = weather.hourly.temperature_2m[date.getHours()] + " F°";
+            save();
         } catch(e) {
             document.getElementById("weather-num").innerHTML = "invalid city";
             //console.log(weather);
