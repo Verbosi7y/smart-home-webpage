@@ -25,7 +25,7 @@ const locations = {
     el_paso: ["31.772543", "-106.460953"],
     washington_dc: ["38.8951", "-77.0364"],
     boston: ["42.361145", "-71.057083"],
-    las_vegas: ["36.188110", "-115.176468"],
+    las_vegas: ["36.188110", "-115.176468"]
     };
 
 let weather = 404; // default value if error
