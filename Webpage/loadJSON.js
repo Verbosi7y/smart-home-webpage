@@ -5,15 +5,13 @@ let irrigationBool = 1;
 let fridge = 40; // default temperature
 let freezer = 20;
 let thermostat_temp = 72; // default temperature
-let city_name = '';
 
 var db = {};
 retrieve();
 
 function save(){
     db = {FRIDGE:fridge, FREEZER:freezer, THERMOSTAT:thermostat_temp, 
-        COFFEE:coffeeBool, VACUUM:vacuumBool, LIGHTING:lightingBool, 
-        IRRIGATION:irrigationBool, WEATHER:city_name};
+        COFFEE:coffeeBool, VACUUM:vacuumBool, LIGHTING:lightingBool, IRRIGATION:irrigationBool};
 
     var JSONObject = JSON.stringify(db);
     //JSON stands for JavaScript Object Notation
@@ -35,7 +33,6 @@ function retrieve(){
         setFridge(JSObject["FRIDGE"]);
         setFreezer(JSObject["FREEZER"]);
         setThermostat(JSObject["THERMOSTAT"]);
-        setWeather(JSObject["Weather"]);
         setToggle(JSObject);
 
     } catch {
