@@ -6,6 +6,13 @@ let fridge = 40; // default temperature
 let freezer = 20;
 let thermostat_temp = 72; // default temperature
 let city_name = 'Catonsville';
+let schedule_r = "";
+let schedule_t = "";
+let schedule_c = "";
+let schedule_v = "";
+let schedule_gl = "";
+let schedule_gi = "";
+
 
 var db = {};
 retrieve();
@@ -39,7 +46,12 @@ function retrieve(){
         setThermostat(JSObject["THERMOSTAT"]);
         setWeather(JSObject["WEATHER"]);
         loadCityTemp()
+        setSchedule('schedule_r', JSObject["SCHEDULER"])
+        setSchedule('schedule_t', JSObject["SCHEDULET"])
         setSchedule('schedule_c', JSObject["SCHEDULEC"])
+        setSchedule('schedule_v', JSObject["SCHEDULEV"])
+        setSchedule('schedule_gl', JSObject["SCHEDULEGL"])
+        setSchedule('schedule_gi', JSObject["SCHEDULEGI"])
         setToggle(JSObject);
 
     } catch {
