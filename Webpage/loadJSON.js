@@ -5,7 +5,7 @@ let irrigationBool = 1;
 let fridge = 40; // default temperature
 let freezer = 20;
 let thermostat_temp = 72; // default temperature
-let city_name = 'Catonsville';
+let city_name = 'Baltimore'; // Default value
 
 var db = {};
 retrieve();

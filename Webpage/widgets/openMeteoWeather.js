@@ -1,13 +1,13 @@
-let weather = 404; // default value if error
 function setWeather(storeCity)
 {
     document.getElementById("cityInput").value = storeCity;
     city_name = storeCity;
+    loadCityTemp();
 }
 
 async function loadCityTemp() {
     const date = new Date();
-    var selectElem = document.getElementById("cities");
+    let weather = 404; // default value if error
     
     var OWM_API_Key = 'e9218fd9904305f49ee367bbf59e44a5';
     city_name = document.getElementById("cityInput").value;
@@ -22,12 +22,13 @@ async function loadCityTemp() {
         try {
             weather = await (await fetch(weatherUrl)).json();
             document.getElementById("weather-num").innerHTML = weather.hourly.temperature_2m[date.getHours()] + " F°";
+            save();
         } catch(e) {
-            document.getElementById("weather-num").innerHTML = "invalid city";
+            document.getElementById("weather-num").innerHTML = "- F°";
             //console.log(weather);
         }
     } catch(e) {
-        document.getElementById("weather-num").innerHTML = "invalid city";
+        document.getElementById("weather-num").innerHTML = "- F°";
         return;
     }
 }
