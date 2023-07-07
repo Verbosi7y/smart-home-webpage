@@ -17,22 +17,146 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Smart Home Hub</title>
+        <link rel="stylesheet" href="style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-        <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
-        
-        <link href="style.css" rel="stylesheet">
-        <script src="widgets.js" type="text/babel"></script>
-        <script src="main.js" type="text/babel"></script>
     </head>
 
     <body style="background-color: #424242;">
-        <div id="root"></div>
+        <div id="home-title" contenteditable="true">Farmer's Smart Home Hub</div>
+
+        <div class="d-flex justify-content-center flex-wrap">
+            <!--Weather Widget-->
+            <span class="widget" id="weather">
+                <article class="module">
+                    <div>
+                        <h1>Weather</h1>
+                    </div>
+                    <label for="cityInput">City:</label>
+                    <input type="text" id="cityInput" oninput="loadCityTemp()">
+                    <div id="weather-num"></div>
+                </article>
+            </span>
+
+            <!--Refrigerator Widget-->
+            <span class="widget" id="fridge">
+                <article class="module">
+                    <div class="fridge">
+                        <div>
+                            <h1>Fridge</h1>
+                        </div>
+                        <div id="fridge-interactable">
+                            <button id="hot" onclick="increaseFridge()">Hot</button>
+                            <div id="fridge-num"></div>
+                            <button id="cold" onclick="decreaseFridge()">Cold</button>
+                        </div>
+                    </div>
+                    <div class="freezer">
+                        <div>
+                            <h1>Freezer</h1>
+                        </div>
+                        <div id="freezer-interactable">
+                            <button id="hot" onclick="increaseFreezer()">Hot</button>
+                            <div id="freezer-num"></div>
+                            <button id="cold" onclick="decreaseFreezer()">Cold</button>
+                        </div>
+                    </div>
+                    <div class="schedule-wrap">
+                        <input type="datetime-local" class="schedule"></input>
+                    </div>
+                </article>
+            </span>
+
+            <!--Thermostat Widget-->
+            <span class="widget" id="thermostat"> 
+                <article class="module">
+                    <div>
+                        <h1>Thermostat</h1>
+                    </div>
+                    <button id="hot" onclick="increaseTemp()">Hot</button>
+                    <div id="temperature-num"></div>
+                    <button id="cold" onclick="decreaseTemp()">Cold</button>
+                    <br>
+                    <div class="schedule-wrap">
+                        <input type="datetime-local" class="schedule"></input>
+                    </div>
+                </article>
+            </span>
+
+            <!--Coffee Machine Widget-->
+            <span class="widget" id="coffee"> 
+                <article class="module">
+                    <button id="coffeeButton" class="toggleButton" 
+                            onclick="toggleButton('coffeeButton')">ON</button>
+                    <div>
+                        <h1>Coffee</h1>
+                    </div>
+                    <div class="schedule-wrap">
+                        <input type="datetime-local" class="schedule"></input>
+                    </div>
+                </article>
+            </span>
+
+            <!--Vacuum Machine Widget-->
+            <span class="widget" id="vacuum"> 
+                <article class="module">
+                    <button id="vacuumButton" class="toggleButton" 
+                            onclick="toggleButton('vacuumButton')">ON</button>
+                    <div>
+                        <h1>Vacuum</h1>
+                    </div>
+                    <div class="schedule-wrap">
+                        <input type="datetime-local" class="schedule"></input>
+                    </div>
+                </article>
+            </span>
+
+            <!--Garden Lights Widget-->
+            <span class="widget" id="garden-light"> 
+                <article class="module">
+                    <button id="garden-lightButton" class="toggleButton" 
+                            onclick="toggleButton('garden-lightButton')">ON</button>
+                    <div>
+                        <h1>Garden Lighting</h1>
+                    </div>
+                    <div class="schedule-wrap">
+                        <input type="datetime-local" class="schedule"></input>
+                    </div>
+                </article>
+            </span>
+
+            <!--Garden Irrigation Widget-->
+            <span class="widget" id="garden-irrigation"> 
+                <article class="module">
+                    <button id="garden-irrigationButton" class="toggleButton" 
+                            onclick="toggleButton('garden-irrigationButton')">ON</button>
+                    <div>
+                        <h1>Garden Irrigation</h1>
+                    </div>
+                    <div class="schedule-wrap">
+                        <input type="datetime-local" class="schedule"></input>
+                    </div>
+                </article>
+            </span>
+        
+            <!--Add New Device Widget-->
+            <span class="widget" id="add-device"> 
+                <article class="module"> 
+                    <div style="font-size: 120px; margin: 0px; padding: 0px"> + </div>
+                    <div>
+                        <h1>Add device</h1>
+                    </div>
+                </article>
+            </span>
+        </div>
+
+        <script src="widgets/openMeteoWeather.js"></script>
+        <script src="widgets/fridge.js"></script>
+        <script src="widgets/thermostat.js"></script>
+        <script src="widgets/toggleButton.js"></script>
+
+        <script src="loadJSON.js"></script>
     </body>
 </html>
