@@ -9,8 +9,40 @@ class App extends React.Component {
             COFFEE: 0,
             VACUUM: 0,
             LIGHTING: 0,
-            IRRIGATION: 0
+            IRRIGATION: 0//,
+            // SCHEDULER:schedule_r, 
+            // SCHEDULET:schedule_t, 
+            // SCHEDULEC:schedule_c, 
+            // SCHEDULEV:schedule_v,
+            // SCHEDULEGL:schedule_gl, 
+            // SCHEDULEGI:schedule_gi
         };
+
+        this.save();
+        this.retrieve();
+    }
+
+    save() {
+        var JSONObject = JSON.stringify(this.state);
+        localStorage.setItem("settingsDB", JSONObject);
+        console.log(this.state);
+        console.log(JSONObject);
+    }
+
+    retrieve(){
+        try {
+            var JSONObject = localStorage.getItem("settingsDB");
+            var JSObject = JSON.parse(JSONObject);
+    
+            setFridge(JSObject["FRIDGE"]);
+            setFreezer(JSObject["FREEZER"]);
+            setThermostat(JSObject["THERMOSTAT"]);
+            setWeather(JSObject["WEATHER"]);
+            setToggle(JSObject);
+    
+        } catch (e){
+            this.save();
+        }
     }
     
     render () {
