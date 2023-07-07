@@ -18,6 +18,11 @@ class App extends React.Component {
             // SCHEDULEGI:schedule_gi
         };
 
+        this.handleC_Power = this.handleC_Power.bind(this);
+        this.handleV_Power = this.handleV_Power.bind(this);
+        this.handleL_Power = this.handleL_Power.bind(this);
+        this.handleI_Power = this.handleI_Power.bind(this);
+
         this.save();
         this.retrieve();
     }
@@ -43,6 +48,22 @@ class App extends React.Component {
         } catch (e){
             this.save();
         }
+    }
+
+    handleC_Power(p_state){
+        this.setState({COFFEE: p_state});
+    }
+
+    handleV_Power(p_state){
+        this.setState({VACUUM: p_state});
+    }
+
+    handleL_Power(p_state){
+        this.setState({LIGHTING: p_state});
+    }
+
+    handleI_Power(p_state){
+        this.setState({IRRIGATION: p_state});
     }
     
     render () {
@@ -75,7 +96,7 @@ class App extends React.Component {
                     
                     <span className="widget" id="coffee"> 
                         <article className="module">
-                            <PowerButton />
+                            <PowerButton save={this.save} power={this.state.COFFEE} onPowerChange={this.handleC_Power}/>
                             <div>
                                 <h1>Coffee</h1>
                             </div>
@@ -87,7 +108,7 @@ class App extends React.Component {
 
                     <span className="widget" id="vacuum"> 
                         <article className="module">
-                            <PowerButton />
+                            <PowerButton save={this.save} power={this.state.VACUUM} onPowerChange={this.handleV_Power}/>
                             <div>
                                 <h1>Vacuum</h1>
                             </div>
@@ -99,7 +120,7 @@ class App extends React.Component {
 
                     <span className="widget" id="garden-light"> 
                         <article className="module">
-                            <PowerButton />
+                            <PowerButton save={this.save} power={this.state.LIGHTING} onPowerChange={this.handleL_Power}/>
                             <div>
                                 <h1>Garden Lighting</h1>
                             </div>
@@ -111,7 +132,7 @@ class App extends React.Component {
 
                     <span className="widget" id="garden-irrigation"> 
                         <article className="module">
-                            <PowerButton />
+                            <PowerButton save={this.save} power={this.state.IRRIGATION} onPowerChange={this.handleI_Power}/>
                             <div>
                                 <h1>Garden Irrigation</h1>
                             </div>

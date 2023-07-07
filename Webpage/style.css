@@ -25,12 +25,19 @@ section {
 
 /* General ON/OFF Toggle Button */
 .toggleButton {
-    background-color: green;
     font-size: 48px;
     margin: 10px;
     width: 200px;
     height: 100px;
     border-radius: 15px;
+}
+
+#on {
+    background-color: green;
+}
+
+#off {
+    background-color: red;
 }
 
 /* General HOT and COLD Button */

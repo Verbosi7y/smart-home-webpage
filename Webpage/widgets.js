@@ -151,46 +151,32 @@ class PowerButton extends React.Component {
     }
 
     toggleButton = () => {
-        let button = document.getElementById(buttonID);
-        console.log(buttonID + " " + 
-                    button.innerText + " " + 
-                    window.getComputedStyle(button).backgroundColor);
-        
-        if(/* window.getComputedStyle(button).backgroundColor == 'green'
-            && */ button.innerText == 'ON')
-        {
-            button.style.backgroundColor = 'red';
-            button.innerText = 'OFF'
-        } else if (/*window.getComputedStyle(button).backgroundColor == 'red'
-        && */ button.innerText == 'OFF'){
-            button.style.backgroundColor = 'green';
-            button.innerText = 'ON'
+        const p_button = this.props.power;
+        if (p_button === 0){
+            this.props.onPowerChange(1);
         }
-    
-        switch (buttonID) {
-            case "coffeeButton":
-                coffeeBool = 1 - coffeeBool;
-                break;
-            case "vacuumButton":
-                vacuumBool = 1 - vacuumBool;
-                break;
-            case "garden-lightButton":
-                lightingBool = 1 - lightingBool;
-                break;
-            case "garden-irrigationButton":
-                irrigationBool = 1 - irrigationBool;
-                break;
+        else{
+            this.props.onPowerChange(0);
         }
-    
-        save();
+
+        this.props.save();
     }
 
     render() {
-        return (
-            <div>
-                <button className="toggleButton" 
+            const p_button = this.props.power;
+            let button;
+
+            if (p_button === 1){
+                button = <button className="toggleButton" id="on" 
                 onClick={this.toggleButton}>ON</button>
-            </div>
+            } else {
+                button = <button className="toggleButton" id="off"
+                onClick={this.toggleButton}>OFF</button>
+            }
+            return (
+                <div>
+                    {button}
+                </div>
         );
     }
 }
