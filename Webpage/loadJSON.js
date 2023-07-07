@@ -13,7 +13,9 @@ retrieve();
 function save(){
     db = {FRIDGE:fridge, FREEZER:freezer, THERMOSTAT:thermostat_temp, 
         COFFEE:coffeeBool, VACUUM:vacuumBool, LIGHTING:lightingBool, 
-        IRRIGATION:irrigationBool, WEATHER:city_name};
+        IRRIGATION:irrigationBool, WEATHER:city_name, SCHEDULER:schedule_r, 
+        SCHEDULET:schedule_t, SCHEDULEC:schedule_c, SCHEDULEV:schedule_v,
+        SCHEDULEGL:schedule_gl, SCHEDULEGI:schedule_gi};
 
     var JSONObject = JSON.stringify(db);
     //JSON stands for JavaScript Object Notation
