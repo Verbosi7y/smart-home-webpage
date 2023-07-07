@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     <div class="schedule-wrap">
-                        <input type="datetime-local" class="schedule"></input>
+                        <input type="datetime-local" class="schedule_r" onchange="schedule('schedule_r', 'freezer-num')"></input>
                     </div>
                 </article>
             </span>
@@ -112,7 +112,7 @@
                     <button id="cold" onclick="decreaseTemp()">Cold</button>
                     <br>
                     <div class="schedule-wrap">
-                        <input type="datetime-local" class="schedule"></input>
+                        <input type="datetime-local" class="schedule_t" onchange="schedule('schedule_t', 'temperature-num')"></input>
                     </div>
                 </article>
             </span>
@@ -188,7 +188,7 @@
         <script src="widgets/fridge.js"></script>
         <script src="widgets/thermostat.js"></script>
         <script src="widgets/toggleButton.js"></script>
-
+        <script src="widgets/schedule.js"></script>
         <script src="loadJSON.js"></script>
     </body>
 </html>
