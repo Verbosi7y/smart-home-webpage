@@ -39,6 +39,7 @@ function retrieve(){
         setThermostat(JSObject["THERMOSTAT"]);
         setWeather(JSObject["WEATHER"]);
         loadCityTemp()
+        setSchedule('schedule_c', JSObject["SCHEDULEC"])
         setToggle(JSObject);
 
     } catch {

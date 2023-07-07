@@ -21,3 +21,10 @@ function schedule(scheduleID, buttonID)
     save();
     toggleButton(buttonID);
 }
+
+function setSchedule(scheduleID, storedValue)
+{
+    console.log(document.getElementById(scheduleID).value);
+    document.getElementById(scheduleID).value = storedValue;
+
+}
