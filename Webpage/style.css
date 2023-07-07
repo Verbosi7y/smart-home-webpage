@@ -176,3 +176,9 @@ section {
 #add-device > .module {
     text-align: center;
 }
+
+#add-device-plus {
+    font-size: 120px; 
+    margin: 0px; 
+    padding: 0px
+}
