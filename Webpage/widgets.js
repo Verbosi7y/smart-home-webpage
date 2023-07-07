@@ -5,39 +5,6 @@ class Weather extends React.Component {
 
     setCity = (storeCity) => {
         document.getElementById("cityInput").value = storeCity;
-<<<<<<< Updated upstream
-        city_name = storeCity;
-        loadCityTemp();
-    }
-
-    loadCityTemp = () => {
-        const date = new Date();
-        let weather = 404; // default value if error
-        
-        var OWM_API_Key = 'e9218fd9904305f49ee367bbf59e44a5';
-        city_name = document.getElementById("cityInput").value;
-        var locationURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city_name + '&appid=' + OWM_API_Key;
-    
-        try{
-            let cityInfo = await (fetch(locationURL)).json();
-            //console.log(cityInfo.coord.lat.toString() + '_' + cityInfo.coord.lon.toString());
-    
-            let weatherUrl = 'https://api.open-meteo.com/v1/forecast?latitude=' + cityInfo.coord.lat + '&longitude=' + cityInfo.coord.lon + '&hourly=temperature_2m&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FNew_York&forecast_days=1';
-        
-            try {
-                weather = await (fetch(weatherUrl)).json();
-                document.getElementById("weather-num").innerHTML = weather.hourly.temperature_2m[date.getHours()] + " F°";
-                save();
-            } catch(e) {
-                document.getElementById("weather-num").innerHTML = "- F°";
-                //console.log(weather);
-            }
-        } catch(e) {
-            document.getElementById("weather-num").innerHTML = "- F°";
-            return;
-        }
-    }
-=======
         this.setState({ city_name: storeCity }, () => this.loadCityTemp());
     }
 
@@ -68,7 +35,6 @@ class Weather extends React.Component {
         });
     }
 
->>>>>>> Stashed changes
     render() {
         return (
         <div>
@@ -81,18 +47,6 @@ class Weather extends React.Component {
 }
 
 class Fridge extends React.Component {
-<<<<<<< Updated upstream
-
-}
-
-class Thermostat extends React.Component {
-
-}
-
-class PowerButton extends React.Component {
-
-}
-=======
     constructor(props){
         super(props);
     }
@@ -188,15 +142,55 @@ class Thermostat extends React.Component {
 class PowerButton extends React.Component {
     constructor(props){
         super(props);
+
+        const buttonIDs = ["coffeeButton", "vacuumButton", "garden-lightButton", "garden-irrigationButton"];
+        const jsonIDMap = {"coffeeButton":"COFFEE", 
+                    "vacuumButton":"VACUUM", 
+                    "garden-lightButton":"LIGHTING", 
+                    "garden-irrigationButton":"IRRIGATION"}
+    }
+
+    toggleButton = () => {
+        let button = document.getElementById(buttonID);
+        console.log(buttonID + " " + 
+                    button.innerText + " " + 
+                    window.getComputedStyle(button).backgroundColor);
+        
+        if(/* window.getComputedStyle(button).backgroundColor == 'green'
+            && */ button.innerText == 'ON')
+        {
+            button.style.backgroundColor = 'red';
+            button.innerText = 'OFF'
+        } else if (/*window.getComputedStyle(button).backgroundColor == 'red'
+        && */ button.innerText == 'OFF'){
+            button.style.backgroundColor = 'green';
+            button.innerText = 'ON'
+        }
+    
+        switch (buttonID) {
+            case "coffeeButton":
+                coffeeBool = 1 - coffeeBool;
+                break;
+            case "vacuumButton":
+                vacuumBool = 1 - vacuumBool;
+                break;
+            case "garden-lightButton":
+                lightingBool = 1 - lightingBool;
+                break;
+            case "garden-irrigationButton":
+                irrigationBool = 1 - irrigationBool;
+                break;
+        }
+    
+        save();
     }
 
     render() {
         return (
             <div>
                 <button className="toggleButton" 
-                onClick="toggleButton()">ON</button>
+                onClick={this.toggleButton}>ON</button>
             </div>
         );
     }
 }
->>>>>>> Stashed changes
