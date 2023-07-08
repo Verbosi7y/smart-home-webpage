@@ -29,18 +29,12 @@ class App extends React.Component {
             COFFEE: 0,
             VACUUM: 0,
             LIGHTING: 0,
-            IRRIGATION: 0//,
-            // SCHEDULER:schedule_r, 
-            // SCHEDULET:schedule_t, 
-            // SCHEDULEC:schedule_c, 
-            // SCHEDULEV:schedule_v,
-            // SCHEDULEGL:schedule_gl, 
-            // SCHEDULEGI:schedule_gi
+            IRRIGATION: 0
         };
     }
 
     // Retrieve settings/db from last session before Render
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.retrieve();
     }
 
