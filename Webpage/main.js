@@ -12,6 +12,8 @@ class App extends React.Component {
 
         this.handleThermostat = this.handleThermostat.bind(this);
 
+        this.handleWeather = this.handleWeather.bind(this);
+
         this.state = {page: 'Home', // Home Page
             city_name: 'Baltimore', // Default City
             weather_temp: 0, // Default weather temps
@@ -49,7 +51,8 @@ class App extends React.Component {
         try {
             var JSONObject = localStorage.getItem("settingsDB");
             var JSObject = JSON.parse(JSONObject);
-    
+            
+            this.setState({city_name: JSObject["city_name"]}, () => { this.save();});
             this.setState({fridge_temp: JSObject["fridge_temp"]}, () => { this.save();});
             this.setState({freezer_temp: JSObject["freezer_temp"]}, () => { this.save();});
             this.setState({room_temp: JSObject["room_temp"]}, () => { this.save();});
@@ -62,6 +65,7 @@ class App extends React.Component {
     
         } catch (e){
             this.save();
+            this.retrieve();
         }
     }
 
@@ -92,11 +96,15 @@ class App extends React.Component {
     handleThermostat(temp){
         this.setState({room_temp: temp}, () => { this.save();});
     }
+
+    handleWeather(city){
+        this.setState({city_name: city}, () => { this.save();});
+    }
     
     render () {
         if (this.state.page === "Home"){
         return (
-            <div className="container border mt-5 p-3">
+            <div>
                 <div id="home-title">Farmer's Smart Home Hub</div>
                 <div className="d-flex justify-content-center flex-wrap">
                     <span className="widget" id="weather">
@@ -104,14 +112,12 @@ class App extends React.Component {
                             <div>
                                 <h1>Weather</h1>
                             </div>
-                            <Weather city={this.state.city_name} save={this.save}/>
+                            <Weather city={this.state.city_name} onWeatherChange={this.handleWeather}/>
                         </article>
                     </span>
 
                     <span className="widget" id="fridge">
-                        <article className="module">
                             <Fridge fridge={this.state.fridge_temp} freezer={this.state.freezer_temp} onFridgeChange={this.handleFridge} onFreezerChange={this.handleFreezer}/>
-                        </article>
                     </span>
 
                     <span className="widget" id="thermostat"> 

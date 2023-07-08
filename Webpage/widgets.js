@@ -7,6 +7,10 @@ class Weather extends React.Component {
         this.setCity(this.props.city);
     }
 
+    componentWillUnmount() {
+        this.props.onWeatherChange(document.getElementById("cityInput").value);
+    }
+
     setCity = (storeCity) => {
         document.getElementById("cityInput").value = storeCity;
         this.setState({ city_name: storeCity }, () => this.loadCityTemp());
@@ -87,7 +91,7 @@ class Fridge extends React.Component {
 
     render() {
         return (
-            <div>
+            <article className="module">
                 <div className="fridge">
                     <div>
                         <h1>Fridge</h1>
@@ -111,7 +115,7 @@ class Fridge extends React.Component {
                 <div className="schedule-wrap">
                     <input type="datetime-local" className="schedule"></input>
                 </div>
-            </div>
+            </article>
         );
     }
 }
