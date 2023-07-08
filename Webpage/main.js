@@ -34,6 +34,9 @@ class App extends React.Component {
     componentWillMount() {
         this.retrieve();
     }
+    componentDidMount() {
+        this.retrieve();
+    }
 
     save() {
         var JSONObject = JSON.stringify(this.state);
