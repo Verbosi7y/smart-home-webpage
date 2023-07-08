@@ -170,11 +170,55 @@ class Thermostat extends React.Component {
         return (
             <div>
                 <div>
-                    <h1>Thermostat</h1>
+                    <h1>Bed room</h1>
                 </div>
                 <button id="hot" onClick={this.increaseTemp}>Hot</button>
                 <div id="temperature-num"></div>
                 <button id="cold" onClick={this.decreaseTemp}>Cold</button>
+                <br></br>
+                <div className="schedule-wrap">
+                    <input type="datetime-local" className="schedule"></input>
+                </div>
+            </div>
+        );
+    }
+}
+
+class Thermostat2 extends React.Component {
+    constructor(props){
+        super(props);
+    }
+
+    // Set Temperature of previous sessions from Local Storage
+    componentDidMount2() {
+        this.setThermostat2(this.props.thermostat2);
+    }
+
+    // Set a temperature
+    setThermostat2 = (temp) =>  {
+        document.getElementById("temperature-num2").innerHTML = temp + " F°";
+        this.props.onThermostatChange2(temp);
+    }
+    
+    // Increment Temp
+    increaseTemp2 = () => { 
+        this.setThermostat2(this.props.thermostat2 + 1);
+    }
+
+    // Decrement Temp
+    decreaseTemp2 = () => { 
+        this.setThermostat2(this.props.thermostat2 - 1);
+    }
+
+    render() {
+        return (
+            <div>
+                <div>
+                    <h1>Living room</h1>
+                </div>
+                <button id="hot" onClick={this.increaseTemp2}>Hot</button>
+                <div id="temperature-num2"></div>
+                <button id="cold" onClick={this.decreaseTemp2}>Cold</button>
                 <br></br>
                 <div className="schedule-wrap">
                     <input type="datetime-local" className="schedule"></input>

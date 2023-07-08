@@ -14,6 +14,7 @@ class App extends React.Component {
 
         // Bind Handle for Thermostat
         this.handleThermostat = this.handleThermostat.bind(this);
+        this.handleThermostat2 = this.handleThermostat2.bind(this);
 
         // Bind Handle for Weather
         this.handleWeather = this.handleWeather.bind(this);
@@ -68,6 +69,7 @@ class App extends React.Component {
             this.setState({fridge_temp: JSObject["fridge_temp"]}, () => { this.save();});
             this.setState({freezer_temp: JSObject["freezer_temp"]}, () => { this.save();});
             this.setState({room_temp: JSObject["room_temp"]}, () => { this.save();});
+            this.setState({room_temp2: JSObject["room_temp2"]}, () => { this.save();});
             this.setState({weather_temp: JSObject["weather_temp"]}, () => { this.save();});
             this.setState({COFFEE: JSObject["COFFEE"]}, () => { this.save();});
             this.setState({VACUUM: JSObject["VACUUM"]}, () => { this.save();});
@@ -115,6 +117,10 @@ class App extends React.Component {
     handleThermostat(temp){
         this.setState({room_temp: temp}, () => { this.save();});
     }
+    
+    handleThermostat2(temp){
+        this.setState({room_temp2: temp}, () => { this.save();});
+    }
 
     // Weather temperature state handler
     handleWeather(city){
@@ -147,6 +153,11 @@ class App extends React.Component {
                         </article>
                     </span>
 
+                    <span className="widget" id="thermostat"> 
+                        <article className="module">
+                            <Thermostat2 thermostat={this.state.room_temp2} onThermostatChange={this.handleThermostat2} />
+                        </article>
+                    </span>
                     
                     <span className="widget" id="coffee"> 
                         <article className="module">
