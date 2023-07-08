@@ -22,7 +22,6 @@ class Weather extends React.Component {
             .then(response => response.json())
             .then(weather => {
                 document.getElementById("weather-num").innerHTML = weather.hourly.temperature_2m[date.getHours()] + " F°";
-                //this.save();
             })
             .catch(error => {
                 document.getElementById("weather-num").innerHTML = "- F°";
@@ -52,37 +51,29 @@ class Fridge extends React.Component {
     }
     
     setFridge = (temp) => {
-        fridge = temp;
-        document.getElementById("fridge-num").innerHTML = fridge + " F°";
+        this.props.onFridgeChange(temp);
+        document.getElementById("fridge-num").innerHTML = temp + " F°";
     }
     
-    setFreezer = (temp) => {
-        freezer = temp;
-        document.getElementById("freezer-num").innerHTML = freezer + " F°";
+    setFreezer = (temp) =>  {
+        this.props.onFreezerChange(temp);
+        document.getElementById("freezer-num").innerHTML = temp + " F°";
     }
     
-    increaseFridge(){ 
-        var fri_temp = document.getElementById("fridge-num").value + 1;
-        this.setState({ fridge_temp: fri_temp }, () => this.setFridge(fri_temp));
-        // save();
+    increaseFridge = () => { 
+        this.setFridge(this.props.fridge + 1);
     }
     
-    increaseFreezer(){ 
-        var fre_temp = document.getElementById("freezer-num").value + 1;
-        this.setState({ fridge_temp: fre_temp }, () => this.setFridge(fre_temp));
-        // save();
+    increaseFreezer = () => { 
+        this.setFreezer(this.props.freezer + 1);
     }
     
-    decreaseFridge(){
-        var fri_temp = document.getElementById("fridge-num").value - 1;
-        this.setState({ fridge_temp: fri_temp }, () => this.setFridge(fri_temp));
-        save();
+    decreaseFridge = () => {
+        this.setFridge(this.props.fridge - 1);
     }
     
-    decreaseFreezer(){
-        var fre_temp = document.getElementById("freezer-num").value - 1;
-        this.setState({ fridge_temp: fre_temp }, () => this.setFridge(fre_temp));
-        // save();
+    decreaseFreezer = () => {
+        this.setFreezer(this.props.freezer - 1);
     }
 
     render() {
@@ -121,15 +112,28 @@ class Thermostat extends React.Component {
         super(props);
     }
 
+    setThermostat = (temp) =>  {
+        this.props.onThermostatChange(temp);
+        document.getElementById("temperature-num").innerHTML = temp + " F°";
+    }
+    
+    increaseTemp = () => { 
+        this.setThermostat(this.props.thermostat + 1);
+    }
+
+    decreaseTemp = () => { 
+        this.setThermostat(this.props.thermostat - 1);
+    }
+
     render() {
         return (
             <div>
                 <div>
                     <h1>Thermostat</h1>
                 </div>
-                <button id="hot" onClick="increaseTemp()">Hot</button>
+                <button id="hot" onClick={this.increaseTemp}>Hot</button>
                 <div id="temperature-num"></div>
-                <button id="cold" onClick="decreaseTemp()">Cold</button>
+                <button id="cold" onClick={this.decreaseTemp}>Cold</button>
                 <br></br>
                 <div className="schedule-wrap">
                     <input type="datetime-local" className="schedule"></input>
@@ -158,8 +162,6 @@ class PowerButton extends React.Component {
         else{
             this.props.onPowerChange(0);
         }
-
-        this.props.save();
     }
 
     render() {

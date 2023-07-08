@@ -4,6 +4,7 @@ class App extends React.Component {
         this.state = {page: 'Home', // Home Page
             city_name: 'Baltimore', // Default City
             weather_temp: 0, // Default weather temps
+            room_temp: 0, 
             fridge_temp: 0,
             freezer_temp: 0,
             COFFEE: 0,
@@ -23,8 +24,13 @@ class App extends React.Component {
         this.handleL_Power = this.handleL_Power.bind(this);
         this.handleI_Power = this.handleI_Power.bind(this);
 
-        this.save();
-        this.retrieve();
+        this.handleFridge = this.handleFridge.bind(this);
+        this.handleFreezer = this.handleFreezer.bind(this);
+
+        this.handleThermostat = this.handleThermostat.bind(this);
+        
+        // this.save();
+        // this.retrieve();
     }
 
     save() {
@@ -52,18 +58,37 @@ class App extends React.Component {
 
     handleC_Power(p_state){
         this.setState({COFFEE: p_state});
+        this.save();
     }
 
     handleV_Power(p_state){
         this.setState({VACUUM: p_state});
+        this.save();
     }
 
     handleL_Power(p_state){
         this.setState({LIGHTING: p_state});
+        this.save();
     }
 
     handleI_Power(p_state){
         this.setState({IRRIGATION: p_state});
+        this.save();
+    }
+
+    handleFridge(temp){
+        this.setState({fridge_temp: temp});
+        this.save();
+    }
+
+    handleFreezer(temp){
+        this.setState({freezer_temp: temp});
+        this.save();
+    }
+
+    handleThermostat(temp){
+        this.setState({room_temp: temp});
+        this.save();
     }
     
     render () {
@@ -83,20 +108,20 @@ class App extends React.Component {
 
                     <span className="widget" id="fridge">
                         <article className="module">
-                            <Fridge />
+                            <Fridge fridge={this.state.fridge_temp} freezer={this.state.freezer_temp} onFridgeChange={this.handleFridge} onFreezerChange={this.handleFreezer}/>
                         </article>
                     </span>
 
                     <span className="widget" id="thermostat"> 
                         <article className="module">
-                            <Thermostat />
+                            <Thermostat thermostat={this.state.room_temp} onThermostatChange={this.handleThermostat} />
                         </article>
                     </span>
 
                     
                     <span className="widget" id="coffee"> 
                         <article className="module">
-                            <PowerButton save={this.save} power={this.state.COFFEE} onPowerChange={this.handleC_Power}/>
+                            <PowerButton power={this.state.COFFEE} onPowerChange={this.handleC_Power}/>
                             <div>
                                 <h1>Coffee</h1>
                             </div>
@@ -108,7 +133,7 @@ class App extends React.Component {
 
                     <span className="widget" id="vacuum"> 
                         <article className="module">
-                            <PowerButton save={this.save} power={this.state.VACUUM} onPowerChange={this.handleV_Power}/>
+                            <PowerButton power={this.state.VACUUM} onPowerChange={this.handleV_Power}/>
                             <div>
                                 <h1>Vacuum</h1>
                             </div>
@@ -120,7 +145,7 @@ class App extends React.Component {
 
                     <span className="widget" id="garden-light"> 
                         <article className="module">
-                            <PowerButton save={this.save} power={this.state.LIGHTING} onPowerChange={this.handleL_Power}/>
+                            <PowerButton power={this.state.LIGHTING} onPowerChange={this.handleL_Power}/>
                             <div>
                                 <h1>Garden Lighting</h1>
                             </div>
@@ -132,7 +157,7 @@ class App extends React.Component {
 
                     <span className="widget" id="garden-irrigation"> 
                         <article className="module">
-                            <PowerButton save={this.save} power={this.state.IRRIGATION} onPowerChange={this.handleI_Power}/>
+                            <PowerButton power={this.state.IRRIGATION} onPowerChange={this.handleI_Power}/>
                             <div>
                                 <h1>Garden Irrigation</h1>
                             </div>
