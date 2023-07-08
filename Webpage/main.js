@@ -2,18 +2,23 @@ class App extends React.Component {
     constructor(props){
         super(props);
 
+        // Bind Handles for Power Buttons
         this.handleC_Power = this.handleC_Power.bind(this);
         this.handleV_Power = this.handleV_Power.bind(this);
         this.handleL_Power = this.handleL_Power.bind(this);
         this.handleI_Power = this.handleI_Power.bind(this);
-
+        
+        // Bind Handles for both Fridge and Freezer
         this.handleFridge = this.handleFridge.bind(this);
         this.handleFreezer = this.handleFreezer.bind(this);
 
+        // Bind Handle for Thermostat
         this.handleThermostat = this.handleThermostat.bind(this);
 
+        // Bind Handle for Weather
         this.handleWeather = this.handleWeather.bind(this);
 
+        // A mapped db of all important variables
         this.state = {page: 'Home', // Home Page
             city_name: 'Baltimore', // Default City
             weather_temp: 0, // Default weather temps
@@ -33,13 +38,17 @@ class App extends React.Component {
         };
     }
 
+    // Retrieve settings/db from last session before Render
     componentWillMount() {
         this.retrieve();
     }
+
+    // Retrieve settings/db from last session after Render
     componentDidMount() {
         this.retrieve();
     }
 
+    // Save the db of states in a JSON format as "settingsDB"
     save() {
         var JSONObject = JSON.stringify(this.state);
         localStorage.setItem("settingsDB", JSONObject);
@@ -47,11 +56,14 @@ class App extends React.Component {
         console.log(JSONObject);
     }
 
+    // Retrieve the db of states in a JSON format as "settingsDB"
     retrieve(){
         try {
+            // Retrieve JSON and turn into Object
             var JSONObject = localStorage.getItem("settingsDB");
             var JSObject = JSON.parse(JSONObject);
             
+            // Set the current states from previously saved states
             this.setState({city_name: JSObject["city_name"]}, () => { this.save();});
             this.setState({fridge_temp: JSObject["fridge_temp"]}, () => { this.save();});
             this.setState({freezer_temp: JSObject["freezer_temp"]}, () => { this.save();});
@@ -62,45 +74,54 @@ class App extends React.Component {
             this.setState({LIGHTING: JSObject["LIGHTING"]}, () => { this.save();});
             this.setState({IRRIGATION: JSObject["IRRIGATION"]}, () => { this.save();});
 
-    
+        // This is triggered for the newest fresh sessions
         } catch (e){
             this.save();
             this.retrieve();
         }
     }
 
+    // Coffee state handler
     handleC_Power(p_state){
         this.setState({COFFEE: p_state}, () => { this.save();});
     }
 
+    // Vacuum state handler
     handleV_Power(p_state){
         this.setState({VACUUM: p_state}, () => { this.save();});
     }
 
+    // Garden Lighting state handler
     handleL_Power(p_state){
         this.setState({LIGHTING: p_state}, () => { this.save();});
     }
 
+    // Garden Irrigation state handler
     handleI_Power(p_state){
         this.setState({IRRIGATION: p_state}, () => { this.save();});
     }
 
+    // Fridge temperature state handler
     handleFridge(temp){
         this.setState({fridge_temp: temp}, () => { this.save();});
     }
 
+    // Freezer temperature state handler
     handleFreezer(temp){
         this.setState({freezer_temp: temp}, () => { this.save();});
     }
 
+    // Thermostat temperature state handler
     handleThermostat(temp){
         this.setState({room_temp: temp}, () => { this.save();});
     }
 
+    // Weather temperature state handler
     handleWeather(city){
         this.setState({city_name: city}, () => { this.save();});
     }
     
+    // Renders the Main Page
     render () {
         if (this.state.page === "Home"){
         return (
@@ -191,6 +212,7 @@ class App extends React.Component {
     }
 }
 
+// Create a container and render the page using DOM written in React
 const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
 root.render(<App />);
