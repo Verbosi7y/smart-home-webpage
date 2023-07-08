@@ -1,6 +1,17 @@
 class App extends React.Component {
     constructor(props){
         super(props);
+
+        this.handleC_Power = this.handleC_Power.bind(this);
+        this.handleV_Power = this.handleV_Power.bind(this);
+        this.handleL_Power = this.handleL_Power.bind(this);
+        this.handleI_Power = this.handleI_Power.bind(this);
+
+        this.handleFridge = this.handleFridge.bind(this);
+        this.handleFreezer = this.handleFreezer.bind(this);
+
+        this.handleThermostat = this.handleThermostat.bind(this);
+
         this.state = {page: 'Home', // Home Page
             city_name: 'Baltimore', // Default City
             weather_temp: 0, // Default weather temps
@@ -18,19 +29,10 @@ class App extends React.Component {
             // SCHEDULEGL:schedule_gl, 
             // SCHEDULEGI:schedule_gi
         };
+    }
 
-        this.handleC_Power = this.handleC_Power.bind(this);
-        this.handleV_Power = this.handleV_Power.bind(this);
-        this.handleL_Power = this.handleL_Power.bind(this);
-        this.handleI_Power = this.handleI_Power.bind(this);
-
-        this.handleFridge = this.handleFridge.bind(this);
-        this.handleFreezer = this.handleFreezer.bind(this);
-
-        this.handleThermostat = this.handleThermostat.bind(this);
-        
-        // this.save();
-        // this.retrieve();
+    componentWillMount() {
+        this.retrieve();
     }
 
     save() {
@@ -45,11 +47,15 @@ class App extends React.Component {
             var JSONObject = localStorage.getItem("settingsDB");
             var JSObject = JSON.parse(JSONObject);
     
-            setFridge(JSObject["FRIDGE"]);
-            setFreezer(JSObject["FREEZER"]);
-            setThermostat(JSObject["THERMOSTAT"]);
-            setWeather(JSObject["WEATHER"]);
-            setToggle(JSObject);
+            this.setState({fridge_temp: JSObject["fridge_temp"]}, () => { this.save();});
+            this.setState({freezer_temp: JSObject["freezer_temp"]}, () => { this.save();});
+            this.setState({room_temp: JSObject["room_temp"]}, () => { this.save();});
+            this.setState({weather_temp: JSObject["weather_temp"]}, () => { this.save();});
+            this.setState({COFFEE: JSObject["COFFEE"]}, () => { this.save();});
+            this.setState({VACUUM: JSObject["VACUUM"]}, () => { this.save();});
+            this.setState({LIGHTING: JSObject["LIGHTING"]}, () => { this.save();});
+            this.setState({IRRIGATION: JSObject["IRRIGATION"]}, () => { this.save();});
+
     
         } catch (e){
             this.save();
@@ -57,38 +63,31 @@ class App extends React.Component {
     }
 
     handleC_Power(p_state){
-        this.setState({COFFEE: p_state});
-        this.save();
+        this.setState({COFFEE: p_state}, () => { this.save();});
     }
 
     handleV_Power(p_state){
-        this.setState({VACUUM: p_state});
-        this.save();
+        this.setState({VACUUM: p_state}, () => { this.save();});
     }
 
     handleL_Power(p_state){
-        this.setState({LIGHTING: p_state});
-        this.save();
+        this.setState({LIGHTING: p_state}, () => { this.save();});
     }
 
     handleI_Power(p_state){
-        this.setState({IRRIGATION: p_state});
-        this.save();
+        this.setState({IRRIGATION: p_state}, () => { this.save();});
     }
 
     handleFridge(temp){
-        this.setState({fridge_temp: temp});
-        this.save();
+        this.setState({fridge_temp: temp}, () => { this.save();});
     }
 
     handleFreezer(temp){
-        this.setState({freezer_temp: temp});
-        this.save();
+        this.setState({freezer_temp: temp}, () => { this.save();});
     }
 
     handleThermostat(temp){
-        this.setState({room_temp: temp});
-        this.save();
+        this.setState({room_temp: temp}, () => { this.save();});
     }
     
     render () {
@@ -102,7 +101,7 @@ class App extends React.Component {
                             <div>
                                 <h1>Weather</h1>
                             </div>
-                            <Weather />
+                            <Weather city={this.state.city_name} save={this.save}/>
                         </article>
                     </span>
 

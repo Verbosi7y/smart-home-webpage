@@ -3,6 +3,10 @@ class Weather extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.setCity(this.props.city);
+    }
+
     setCity = (storeCity) => {
         document.getElementById("cityInput").value = storeCity;
         this.setState({ city_name: storeCity }, () => this.loadCityTemp());
@@ -49,7 +53,12 @@ class Fridge extends React.Component {
     constructor(props){
         super(props);
     }
-    
+
+    componentDidMount() {
+        this.setFridge(this.props.fridge);
+        this.setFreezer(this.props.freezer);
+    }
+
     setFridge = (temp) => {
         this.props.onFridgeChange(temp);
         document.getElementById("fridge-num").innerHTML = temp + " F°";
@@ -112,9 +121,13 @@ class Thermostat extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.setThermostat(this.props.thermostat);
+    }
+
     setThermostat = (temp) =>  {
-        this.props.onThermostatChange(temp);
         document.getElementById("temperature-num").innerHTML = temp + " F°";
+        this.props.onThermostatChange(temp);
     }
     
     increaseTemp = () => { 
@@ -146,12 +159,14 @@ class Thermostat extends React.Component {
 class PowerButton extends React.Component {
     constructor(props){
         super(props);
+    }
 
-        const buttonIDs = ["coffeeButton", "vacuumButton", "garden-lightButton", "garden-irrigationButton"];
-        const jsonIDMap = {"coffeeButton":"COFFEE", 
-                    "vacuumButton":"VACUUM", 
-                    "garden-lightButton":"LIGHTING", 
-                    "garden-irrigationButton":"IRRIGATION"}
+    componentDidMount() {
+        if (this.props.power === 0){
+            this.props.onPowerChange(0);
+        } else {
+            this.props.onPowerChange(0);
+        }
     }
 
     toggleButton = () => {
