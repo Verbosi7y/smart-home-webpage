@@ -25,7 +25,7 @@ class Weather extends React.Component {
         const date = new Date();
 
         // User can enter ANY city
-        const OWM_API_Key = '';
+        const OWM_API_Key = 'INSERT OPENWEATHERMAP API KEY HERE';
         const city_name = document.getElementById("cityInput").value;
         const locationURL = `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${OWM_API_Key}`;
         
